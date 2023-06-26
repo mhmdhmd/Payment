@@ -36,11 +36,21 @@ To run the `Payment` project, follow these steps:
 
 ### Backend 🖥️🔙
 
-1. Ensure that you have a relational database (such as MySQL) set up and running.
+1. Ensure that you have a relational database (such as MySQL or SqlServer) set up and running.
 
-2. Open a command prompt or terminal and navigate to the `Payment` directory (the root directory of all projects).
+2. Open the `appsettings.json` file and define a `ConnectionString` value based on your selected database. (I have previously defined two examples, one for `MySql` and the other for `SqlServer`).
 
-3. Run the following command to apply the database migrations and create the necessary database and tables:
+3. Open the `Program.cs` file and, in the register section where the DbContext is being registered using `AddDbContext`, perform the configuration based on your selected database. Note that you need to first install the appropriate Provider for that database as a `NuGet Package`. (By default, I have installed the Providers for `MySql` and `SqlServer`).
+
+4. Open a command prompt or terminal and navigate to the `Payment` directory (the root directory of all projects).
+
+5. Run the following command to generate migration files for selected database.
+
+   ```
+   dotnet ef migrations add Init -s Payment.Api -p Payment.Infrastructure
+   ```
+
+6. After that, Run the following command to apply the database migrations and create the necessary database and tables:
 
    ```
    dotnet ef database update -s Payment.Api -p Payment.Infrastructure
@@ -48,14 +58,10 @@ To run the `Payment` project, follow these steps:
 
    This will create the database based on the existing database configuration in the backend project.
 
-   If you're using a different database, make sure to install the database provider Nuget package and update the connection string accordingly.
-   
-   Then update `AddDbContext` registration in `Program.cs` based on selected database.
 
+7. Open the `launchSettings.json` file located in the `Properties` folder of the `Payment.Api` project and set the desired address and port in the `"applicationUrl"` property to specify where the backend API should listen for requests (the default ports are `5000` for `http` and `5001` for `https`).
 
-4. Open the `launchSettings.json` file located in the `Properties` folder of the `Payment.Api` project and set the desired address and port in the `"applicationUrl"` property to specify where the backend API should listen for requests.
-
-6. Build and run the `Payment.Api` project.
+8. Build and run the `Payment.Api` project.
 
 ### Frontend 💻
 
@@ -67,7 +73,7 @@ To run the `Payment` project, follow these steps:
    npm install
    ```
 
-3. Open the `src/environments/environment.ts` file in the `payment-client` project. Set the `baseUrl` property to the address and port where the backend API is running. This will allow the frontend to communicate with the backend.
+3. Open the `src/environments/environment.ts` file in the `payment-client` project. Set the `baseUrl` property to the address and port where the backend API is running. This will allow the frontend to communicate with the backend (the default port is `5000` for `http`).
 4. After the dependencies are installed, run the following command to start the Angular development server:
 
    ```
