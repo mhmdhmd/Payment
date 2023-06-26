@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" style="color:yellow; background-color:darkgreen;" routerLink="/payment-history">Payment History</a>
+        <a class="navbar-brand" routerLink="/product-list">My Store</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge badge-pill badge-primary">{{ cartItemCount }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

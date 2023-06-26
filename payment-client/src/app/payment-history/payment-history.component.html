@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Payment History</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>TransactionId</th>
+                <th>Date</th>
+                <th>Price</th>
+                <th>Shopper Name</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of paymenDetails">
+                <td>{{ item.transactionId }}</td>
+                <td>{{ item.date }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.name }}</td>
+                <td [ngClass]="{
+                    'green': item.status === 'Paid',
+                    'red': item.status === 'Failed'
+                }">{{ item.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <button class="btn btn-primary" routerLink="/product-list">Back to Product List</button>
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Cart</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartItems">
+                <td><img [src]="item.image" alt="{{ item.title }}" class="img-thumbnail"></td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.price }}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="removeFromCart(item)">Remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" routerLink="/product-list">Back to Product List</button>
+    <button class="btn btn-success" routerLink="/checkout">Checkout</button> <!-- Add the Checkout button -->
+</div>

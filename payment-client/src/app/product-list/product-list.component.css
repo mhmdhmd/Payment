@@ -1,0 +1,27 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .card-img-top{
+    width: 50%;
+    height: 200px;
+    object-fit: contain;
+  }
+
+  .cart {
+    margin-top: 20px;
+    display: none;
+  }
+  
+  .cart h2 {
+    margin: 0;
+  }
+
+  .resize{
+    height: 200px;
+    width: 200px;
+  }

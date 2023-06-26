@@ -1,0 +1,19 @@
+<div class="payment-result">
+    <h2>Payment Result</h2>
+    <div *ngIf="paymentResult; else noResult">
+        <div *ngIf="paymentResult.success; else failure">
+            <p class="success-message">Payment Successful</p>
+            <p>Transaction ID: {{ paymentResult.data.transactionId }}</p>
+            <p>Status: {{ paymentResult.data.status }}</p>
+            <p>Result Type: {{ paymentResult.data.resultType }}</p>
+        </div>
+        <ng-template #failure>
+            <p class="failure-message">Payment Failed</p>
+            <p>Error Message: {{ paymentResult.message }}</p>
+        </ng-template>
+    </div>
+    <ng-template #noResult>
+        <p>No payment result available.</p>
+    </ng-template>
+    <button routerLink="/product-list" class="btn btn-primary">Back to Product List</button>
+</div>
