@@ -15,7 +15,7 @@ namespace Payment.Application.Services;
 /// </summary>
 public class PaymentService : ServiceBase, IPaymentService
 {
-    private readonly IPaymentRepository _paymentRepository;
+    private readonly IPaymentHistoryRepository _paymentRepository;
     private readonly ILogger<PaymentService> _logger;
     private readonly IPaymentProvider _paymentProvider;
 
@@ -29,7 +29,7 @@ public class PaymentService : ServiceBase, IPaymentService
     public PaymentService(
         IPaymentProviderFactory providerFactory,
         IMapper mapper,
-        IPaymentRepository paymentRepository,
+        IPaymentHistoryRepository paymentRepository,
         ILogger<PaymentService> logger)
         : base(mapper)
     {

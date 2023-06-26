@@ -14,6 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IMyDbContext, MyDbContext>();
 builder.Services.AddDbContext<MyDbContext>(options =>
 {
     options.UseMySQL(builder.Configuration.GetConnectionString("AppCnnString"));
@@ -25,7 +26,7 @@ builder.Services.AddAutoMapper(typeof(ServiceBase).Assembly);
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddTransient<IAdyenClient, AdyenClient>();
 builder.Services.AddPaymentProviderFactory();
-builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+builder.Services.AddScoped<IPaymentHistoryRepository, PaymentHistoryRepository>();
 
 builder.Services.AddCors();
 

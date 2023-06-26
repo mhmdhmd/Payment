@@ -14,7 +14,7 @@ namespace Payment.Tests.Application;
 [TestFixture]
 public class PaymentServiceTests
 {
-    private IPaymentRepository _paymentRepository;
+    private IPaymentHistoryRepository _paymentHistoryRepository;
     private IPaymentProviderFactory _providerFactory;
     private IMapper _mapper;
     private PaymentService _paymentService;
@@ -25,12 +25,12 @@ public class PaymentServiceTests
     {
         // Arrange
         _mapper = Substitute.For<IMapper>();
-        _paymentRepository = Substitute.For<IPaymentRepository>();
+        _paymentHistoryRepository = Substitute.For<IPaymentHistoryRepository>();
         _paymentProvider = Substitute.For<IPaymentProvider>();
         _providerFactory = Substitute.For<IPaymentProviderFactory>();
         _providerFactory.Create().Returns(_paymentProvider);
         var _logger = Substitute.For<ILogger<PaymentService>>();
-        _paymentService = new PaymentService(_providerFactory, _mapper, _paymentRepository, _logger);
+        _paymentService = new PaymentService(_providerFactory, _mapper, _paymentHistoryRepository, _logger);
     }
 
     [Test]
@@ -124,7 +124,7 @@ public class PaymentServiceTests
         var paymentHistory = new List<PaymentHistoryEntity>();
         var mappedResult = new PaymentHistoryResult();
 
-        _paymentRepository.GetAllAsync(Arg.Any<Expression<Func<PaymentHistoryEntity, object>>>(),
+        _paymentHistoryRepository.GetAllAsync(Arg.Any<Expression<Func<PaymentHistoryEntity, object>>>(),
             Arg.Any<Expression<Func<PaymentHistoryEntity, object>>>()).Returns(paymentHistory);
         _mapper.Map<PaymentHistoryResult>(paymentHistory).Returns(mappedResult);
 

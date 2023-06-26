@@ -23,4 +23,8 @@
       <ProjectReference Include="..\Payment.Domain\Payment.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Persistence\Repositories\PaymentRepository.cs" />
+    </ItemGroup>
+
 </Project>

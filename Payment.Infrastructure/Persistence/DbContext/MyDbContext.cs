@@ -5,7 +5,7 @@ using Payment.Domain.DomainModels.Shopper;
 
 namespace Payment.Infrastructure.Persistence.DbContext;
 
-public class MyDbContext : Microsoft.EntityFrameworkCore.DbContext
+public class MyDbContext : Microsoft.EntityFrameworkCore.DbContext, IMyDbContext
 {
     public MyDbContext(DbContextOptions<MyDbContext> options):base(options)
     {
@@ -15,6 +15,10 @@ public class MyDbContext : Microsoft.EntityFrameworkCore.DbContext
     public DbSet<OrderDetailEntity> OrderDetails { get; set; }
     public DbSet<PaymentHistoryEntity> PaymentHistories { get; set; }
     public DbSet<ShopperEntity> Shoppers { get; set; }
+    public DbSet<T> GetDbSet<T>() where T : class
+    {
+        return Set<T>();
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -59,4 +59,40 @@ public class PaymentControllerTests
         Assert.IsNotNull(result?.Value);
         Assert.IsInstanceOf<PaymentResult>(result?.Value);
     }
+    
+    [Test]
+    public async Task GetHistoryAsync_ReturnsPaymentHistory()
+    {
+        // Arrange
+        var expectedHistory = new PaymentHistoryResult(); // Your expected payment history result
+        _paymentService.GetHistoryAsync().Returns(expectedHistory);
+
+        // Act
+        var result = await _controller.GetHistoryAsync();
+
+        // Assert
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOf<OkObjectResult>(result);
+
+        var okResult = (OkObjectResult)result;
+        Assert.That(okResult.Value, Is.EqualTo(expectedHistory));
+    }
+
+    [Test]
+    public async Task GetHistoryAsync_ReturnsStatusCode200()
+    {
+        // Arrange
+        var expectedHistory = new PaymentHistoryResult(); // Your expected payment history result
+        _paymentService.GetHistoryAsync().Returns(expectedHistory);
+
+        // Act
+        var result = await _controller.GetHistoryAsync();
+
+        // Assert
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOf<OkObjectResult>(result);
+
+        var okResult = (OkObjectResult)result;
+        Assert.That(okResult.StatusCode, Is.EqualTo(200));
+    }
 }
