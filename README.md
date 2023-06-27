@@ -87,7 +87,7 @@ To add a new payment provider to the backend, follow these steps:
 
 1. Create a class that implements the `IPaymentProvider` interface. This class will encapsulate the logic for interacting with the specific payment provider's API.
 
-   Make sure to assign a name of new provider to `Name` property of `IPaymentProvider`. Assign it in the constructor of new class (for example, `PayPalPaymentProvider.cs`)
+   Make sure to assign a name of new provider to `Name` property of `IPaymentProvider`. Assign it in the constructor of new class.
    
    The name should be same as the `Provider` entry value, under the `PaymentSettings` entry of `appsettings.json` file.
 
