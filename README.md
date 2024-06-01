@@ -1,6 +1,6 @@
-# `Payment` Test Project 👛💻
+# `Payment` System 👛💻
 
-Welcome to the `Payment` test project! This project demonstrates a payment system that focuses on multi-payment providers. It utilizes the Factory Pattern and Adapter Pattern to create a flexible environment where new payment providers can be easily added and used for the payment process. The project also includes a simple frontend built with Angular, showcasing a simple shoe store that works with the backend to allow customers to add products to their cart, proceed to checkout, and complete the payment process. Additionally, it provides a payment history feature.
+Welcome to the `Payment` System! This project demonstrates a payment system that focuses on multi-payment providers. It utilizes the Factory Pattern and Adapter Pattern to create a flexible environment where new payment providers can be easily added and used for the payment process. The project also includes a simple frontend built with Angular, showcasing a simple shoe store that works with the backend to allow customers to add products to their cart, proceed to checkout, and complete the payment process. Additionally, it provides a payment history feature.
 
 ## Project Structure 📁
 
